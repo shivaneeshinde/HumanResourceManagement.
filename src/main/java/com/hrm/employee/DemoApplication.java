@@ -18,11 +18,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan("com.hra.employee.entity")
 @EnableJpaRepositories("com.hra.employee.repository")*/
 
-@ComponentScan("com.hra.employee.controller")
+@ComponentScan("com.hrm.employee")
 @SpringBootApplication
 public class DemoApplication {
 
 	public static void main(String[] args) {
+		System.out.println("main");
 		SpringApplication.run(DemoApplication.class, args);
 	}
 

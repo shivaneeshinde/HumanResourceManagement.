@@ -1,34 +1,57 @@
 package com.hrm.employee.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="PersonData")
-public class PersonData {
+@Table(name="Employee")
+public class Employee {
 	
 	@Id
+	@Column(name = "EmpId")
 	private int empId;
+	
+	@Column(name = "Name")
 	private String name;
+	
+	@Column(name = "Address")
 	private String address;
+	
+	@Column(name = "Gender")
 	private String gender;
+	
+	@Column(name = "PhoneNo")
 	private String phoneNo;
+	
+	@Column(name = "EmailId")
 	private String emailId;
+	
+	@Column(name = "DOB")
 	private String dob;
+	
+	@Column(name = "ProfilePic")
 	private String pic;
+	
+	@Column(name = "Password")
 	private String password;
+	
+	@Column(name = "Role")
 	private String role;
+	
+	@Column(name = "TeamName")
 	private String teamName;
+	
+	@Column(name = "Salary")
 	private double salary;
+		
 	
-	
-	
-	public PersonData() {
+	public Employee() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public PersonData(int empId, String name, String address, String gender, String phoneNo, String emailId, String dob,
+	public Employee(int empId, String name, String address, String gender, String phoneNo, String emailId, String dob,
 			String pic, String password, String role, String teamName, double salary) {
 		super();
 		this.empId = empId;
