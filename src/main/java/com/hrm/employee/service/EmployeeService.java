@@ -1,10 +1,13 @@
 package com.hrm.employee.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.hrm.employee.entity.Employee;
 import com.hrm.employee.entity.Leaves;
+import com.hrm.employee.entity.Login;
 import com.hrm.employee.repository.EmployeeRepository;
 import com.hrm.employee.repository.LeavesRepository;
 
@@ -29,6 +32,18 @@ public class EmployeeService {
 		System.out.println("Inside addLeaves");
 		leavesRepository.save(leaves);
 		System.out.println("SAVED!!!");
+	}
+	
+	
+	public Employee login(Login login) {
+		System.out.println("Inside login");
+		List<Employee> emp = employeeRepository.findByEmailIdAndEmPaasword(login.getEmailId(), login.getPassword());
+		
+		System.out.println("Employee is: "+emp.toString());
+		if(emp.size()==0)
+			System.out.println("Invalid user");
+		
+		return emp.get(0);
 	}
 	
 }
