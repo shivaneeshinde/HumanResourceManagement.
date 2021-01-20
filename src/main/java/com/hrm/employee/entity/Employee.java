@@ -34,7 +34,7 @@ public class Employee {
 	@Column(name = "ProfilePic")
 	private String pic;
 	
-	@Column(name = "Password")
+	@Column(name = "EmPaasword")
 	private String password;
 	
 	@Column(name = "Role")
@@ -45,14 +45,16 @@ public class Employee {
 	
 	@Column(name = "Salary")
 	private double salary;
-		
 	
+	@Column(name = "ManagerId")
+	private int managerId;
+		
 	public Employee() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	public Employee(int empId, String name, String address, String gender, String phoneNo, String emailId, String dob,
-			String pic, String password, String role, String teamName, double salary) {
+			String pic, String password, String role, String teamName, double salary, int managerId) {
 		super();
 		this.empId = empId;
 		this.name = name;
@@ -66,6 +68,7 @@ public class Employee {
 		this.role = role;
 		this.teamName = teamName;
 		this.salary = salary;
+		this.managerId = managerId;
 	}
 	public int getEmpId() {
 		return empId;
@@ -139,6 +142,23 @@ public class Employee {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
+	
+	public int getManagerId() {
+		return managerId;
+	}
+
+	public void setManagerId(int managerId) {
+		this.managerId = managerId;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", name=" + name + ", address=" + address + ", gender=" + gender
+				+ ", phoneNo=" + phoneNo + ", emailId=" + emailId + ", dob=" + dob + ", pic=" + pic + ", password="
+				+ password + ", role=" + role + ", teamName=" + teamName + ", salary=" + salary + ", managerId="
+				+ managerId + "]";
+	}
+
 	
 
 }

@@ -33,13 +33,19 @@ public class Leaves {
 	
 	@Column(name = "NoOfDays")
 	private int noOfDays;
+
+	@Column(name = "ApprovalStatus")
+	private String approvalStatus;
+
+	@Column(name = "ApprovalRemarks")
+	private String approvalRemarks;
 	
 
 	public Leaves() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Leaves(int empId, String leaveType, String startDate, String endDate, String comment, int noOfDays) {
+	public Leaves(int empId, String leaveType, String startDate, String endDate, String comment, int noOfDays, String approvalStatus, String approvalRemarks) {
 		super();
 		this.empId = empId;
 		this.leaveType = leaveType;
@@ -47,6 +53,8 @@ public class Leaves {
 		this.endDate = endDate;
 		this.comment = comment;
 		this.noOfDays = noOfDays;
+		this.approvalStatus = approvalStatus;
+		this.approvalRemarks = approvalRemarks;
 	}
 
 	public int getEmpId() {
@@ -95,6 +103,29 @@ public class Leaves {
 
 	public void setNoOfDays(int noOfDays) {
 		this.noOfDays = noOfDays;
+	}
+
+	public String getApprovalStatus() {
+		return approvalStatus;
+	}
+
+	public void setApprovalStatus(String approvalStatus) {
+		this.approvalStatus = approvalStatus;
+	}
+
+	public String getApprovalRemarks() {
+		return approvalRemarks;
+	}
+
+	public void setApprovalRemarks(String approvalRemarks) {
+		this.approvalRemarks = approvalRemarks;
+	}
+
+	@Override
+	public String toString() {
+		return "Leaves [id=" + id + ", empId=" + empId + ", leaveType=" + leaveType + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", comment=" + comment + ", noOfDays=" + noOfDays + ", approvalStatus="
+				+ approvalStatus + ", approvalRemarks=" + approvalRemarks + "]";
 	}
 	
 	
