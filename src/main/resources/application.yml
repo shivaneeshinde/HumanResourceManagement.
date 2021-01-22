@@ -1,10 +1,10 @@
-spring:     
-  datasource:
-    username: root
-    password: shiv
-    url: jdbc:mysql://localhost:3306/hrm
-    driver-class-name: com.mysql.jdbc.Driver
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
+#spring:     
+#  datasource:
+#    username: root
+#    password: shiv
+#    url: jdbc:mysql://localhost:3306/hrm
+#    driver-class-name: com.mysql.jdbc.Driver
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update

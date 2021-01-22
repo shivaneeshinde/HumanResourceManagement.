@@ -1,6 +1,7 @@
 package com.hrm.employee.controller;
 
 import java.util.Base64;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,14 +13,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.hrm.employee.entity.Employee;
 import com.hrm.employee.entity.Leaves;
 import com.hrm.employee.entity.Login;
+import com.hrm.employee.exception.ResourceNotFoundException;
 import com.hrm.employee.service.EmployeeService;
 /*import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMapping;*/
 
 
-@org.springframework.web.bind.annotation.RestController
 //@Controller
+//@RequestMapping("/emp")
+@org.springframework.web.bind.annotation.RestController
 public class RestController {
 	
 	@Autowired
@@ -56,13 +59,20 @@ public class RestController {
 	
 
 	@GetMapping("/login")
-	public Employee login(@RequestBody Login login) {
+	public Employee login(@RequestBody Login login) throws ResourceNotFoundException {
 	    System.out.println("Inside login method");
 	    String originalInput = login.getPassword();
 	    String encodedString = Base64.getEncoder().encodeToString(originalInput.getBytes());
 	    System.out.println("Encoded password is: "+encodedString);
 	    login.setPassword(encodedString);
 		Employee emp = employeeService.login(login);
+		return emp;
+	}
+
+	@GetMapping("/empList")
+	public List<Employee> empList() {
+	    System.out.println("Inside empList method");
+		List<Employee> emp = employeeService.getEmpList();
 		return emp;
 	}
 

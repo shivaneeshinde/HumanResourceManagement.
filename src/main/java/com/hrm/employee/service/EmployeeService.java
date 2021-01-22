@@ -3,11 +3,13 @@ package com.hrm.employee.service;
 import java.util.List;
 
 import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import com.hrm.employee.entity.Employee;
 import com.hrm.employee.entity.Leaves;
 import com.hrm.employee.entity.Login;
+import com.hrm.employee.exception.ResourceNotFoundException;
 import com.hrm.employee.repository.EmployeeRepository;
 import com.hrm.employee.repository.LeavesRepository;
 
@@ -35,15 +37,25 @@ public class EmployeeService {
 	}
 	
 	
-	public Employee login(Login login) {
+	public Employee login(Login login) throws ResourceNotFoundException {
+		String email = login.getEmailId();
 		System.out.println("Inside login");
 		List<Employee> emp = employeeRepository.findByEmailIdAndEmPaasword(login.getEmailId(), login.getPassword());
+				//.orElseThrow( () -> new ResourceNotFoundException("Employee not found for this id: " + email) );
 		
 		System.out.println("Employee is: "+emp.toString());
-		if(emp.size()==0)
+		if(emp.size()==0) {
 			System.out.println("Invalid user");
-		
+			throw new ResourceNotFoundException("Employee not found for this id: " + email);
+		}
+					
 		return emp.get(0);
 	}
+	
+	public List<Employee> getEmpList() {
+	    System.out.println("Inside empList method");	    
+		return this.employeeRepository.findAll();
+	}
+
 	
 }

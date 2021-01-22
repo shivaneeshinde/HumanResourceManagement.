@@ -23,7 +23,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		System.out.println("main");
+		System.out.println("here");
 		SpringApplication.run(DemoApplication.class, args);
 	}
 

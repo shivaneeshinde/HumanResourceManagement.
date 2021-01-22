@@ -1,9 +1,16 @@
 package com.hrm.employee.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="Employee")
@@ -29,10 +36,13 @@ public class Employee {
 	private String emailId;
 	
 	@Column(name = "DOB")
-	private String dob;
+	@Temporal(TemporalType.DATE)
+    @JsonFormat(pattern="yyyy-MM-dd")
+	private Date dob;
 	
+	/*@Lob
 	@Column(name = "ProfilePic")
-	private String pic;
+	private byte[] pic;*/
 	
 	@Column(name = "EmPaasword")
 	private String password;
@@ -53,8 +63,8 @@ public class Employee {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Employee(int empId, String name, String address, String gender, String phoneNo, String emailId, String dob,
-			String pic, String password, String role, String teamName, double salary, int managerId) {
+	public Employee(int empId, String name, String address, String gender, String phoneNo, String emailId, Date dob,
+			String password, String role, String teamName, double salary, int managerId) {
 		super();
 		this.empId = empId;
 		this.name = name;
@@ -63,7 +73,6 @@ public class Employee {
 		this.phoneNo = phoneNo;
 		this.emailId = emailId;
 		this.dob = dob;
-		this.pic = pic;
 		this.password = password;
 		this.role = role;
 		this.teamName = teamName;
@@ -106,18 +115,18 @@ public class Employee {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public String getDob() {
+	public Date getDob() {
 		return dob;
 	}
-	public void setDob(String dob) {
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
-	public String getPic() {
+	/*public byte[] getPic() {
 		return pic;
 	}
-	public void setPic(String pic) {
+	public void setPic(byte[] pic) {
 		this.pic = pic;
-	}
+	}*/
 	public String getPassword() {
 		return password;
 	}
@@ -154,7 +163,7 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [empId=" + empId + ", name=" + name + ", address=" + address + ", gender=" + gender
-				+ ", phoneNo=" + phoneNo + ", emailId=" + emailId + ", dob=" + dob + ", pic=" + pic + ", password="
+				+ ", phoneNo=" + phoneNo + ", emailId=" + emailId + ", dob=" + dob + ", password="
 				+ password + ", role=" + role + ", teamName=" + teamName + ", salary=" + salary + ", managerId="
 				+ managerId + "]";
 	}
