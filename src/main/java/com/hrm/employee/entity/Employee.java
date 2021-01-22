@@ -66,9 +66,10 @@ public class Employee {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Employee(String name, String address, String gender, String phoneNo, String emailId, Date dob,
+	public Employee(int empId, String name, String address, String gender, String phoneNo, String emailId, Date dob,
 			String password, String role, String teamName, double salary, int managerId) {
 		super();
+		this.empId = empId;
 		this.name = name;
 		this.address = address;
 		this.gender = gender;
@@ -81,12 +82,12 @@ public class Employee {
 		this.salary = salary;
 		this.managerId = managerId;
 	}
-	/*public int getEmpId() {
+	public int getEmpId() {
 		return empId;
 	}
 	public void setEmpId(int empId) {
 		this.empId = empId;
-	}*/
+	}
 	public String getName() {
 		return name;
 	}
