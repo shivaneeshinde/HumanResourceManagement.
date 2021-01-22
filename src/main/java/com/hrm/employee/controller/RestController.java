@@ -3,6 +3,8 @@ package com.hrm.employee.controller;
 import java.util.Base64;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,13 +29,15 @@ public class RestController {
 	
 	@Autowired
 	private EmployeeService employeeService;
-
+	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/healthCheck")
 	public String check()
 	{
 		return "checked";
 	}
 
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/addEmployee")
 	public String registration(@RequestBody Employee employee) {
 	    System.out.println("Inside Registration method");
@@ -47,7 +51,7 @@ public class RestController {
 		return "Employee added to the table!!";
 	}
 	
-	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/addLeaves")
 	public String addLeaves(@RequestBody Leaves leaves) {
 	    System.out.println("Inside addLeaves method");
@@ -57,7 +61,7 @@ public class RestController {
 		return "Leaves are added to the table!!";
 	}
 	
-
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/login")
 	public Employee login(@RequestBody Login login) throws ResourceNotFoundException {
 	    System.out.println("Inside login method");
@@ -69,6 +73,7 @@ public class RestController {
 		return emp;
 	}
 
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/empList")
 	public List<Employee> empList() {
 	    System.out.println("Inside empList method");
