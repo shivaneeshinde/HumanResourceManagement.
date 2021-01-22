@@ -24,10 +24,12 @@ public class EmployeeService {
 		this.leavesRepository = leavesRepository;
 	}
 
-	public void addEmployee(Employee employee) {
+	public Employee addEmployee(Employee employee) {
 		System.out.println("Inside addEmployee");
 		employeeRepository.save(employee);
 		System.out.println("SAVED!!!");
+		Employee emp = employeeRepository.findTopByOrderByEmpIdDesc();
+		return emp;
 	}
 	
 	public void addLeaves(Leaves leaves) {

@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
@@ -17,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Employee {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "EmpId")
 	private int empId;
 	
@@ -63,10 +66,9 @@ public class Employee {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Employee(int empId, String name, String address, String gender, String phoneNo, String emailId, Date dob,
+	public Employee(String name, String address, String gender, String phoneNo, String emailId, Date dob,
 			String password, String role, String teamName, double salary, int managerId) {
 		super();
-		this.empId = empId;
 		this.name = name;
 		this.address = address;
 		this.gender = gender;
@@ -79,12 +81,12 @@ public class Employee {
 		this.salary = salary;
 		this.managerId = managerId;
 	}
-	public int getEmpId() {
+	/*public int getEmpId() {
 		return empId;
 	}
 	public void setEmpId(int empId) {
 		this.empId = empId;
-	}
+	}*/
 	public String getName() {
 		return name;
 	}
