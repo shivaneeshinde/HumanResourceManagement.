@@ -50,9 +50,17 @@ public class EmployeeService {
 		Employee emp = employeeRepository.findByempId(empId);
 				//.orElseThrow( () -> new ResourceNotFoundException("Employee not found for this id: " + email) );
 		
-		System.out.println("Employee is: "+emp.toString());
-					
+		System.out.println("Employee is: "+emp.toString());				
 		return emp;
+	}
+		
+	public List<Leaves> getLeaves(int empId){
+		System.out.println("Inside getEmployee");
+		List<Leaves> leaves = leavesRepository.findByempId(empId);
+				//.orElseThrow( () -> new ResourceNotFoundException("Employee not found for this id: " + email) );
+		
+		System.out.println("Leave list is: "+leaves.toString());				
+		return leaves;
 	}
 	
 	public Employee updateEmployee(Employee newEmployee, int empId) {

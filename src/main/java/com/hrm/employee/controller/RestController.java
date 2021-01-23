@@ -82,6 +82,14 @@ public class RestController {
 		return emp;
 	}
 	
+	
+	@GetMapping("/showLeaves/{empId}")
+	public List<Leaves> showLeaves(@PathVariable("empId") int empId){
+	    System.out.println("Inside showLeaves method");
+	    List<Leaves> leaves = employeeService.getLeaves(empId);
+		return leaves;
+	}
+	
 	@PutMapping("/editEmployee/{empId}")
 	public Employee replaceEmployee(@RequestBody Employee employee, @PathVariable int empId) {
 		Employee emp = employeeService.updateEmployee(employee, empId);
