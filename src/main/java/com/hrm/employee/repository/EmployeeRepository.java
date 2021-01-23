@@ -18,5 +18,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	Employee findTopByOrderByEmpIdDesc();
 	
 	Employee findByempId(int empId);
+	
+	void deleteByempId(int empId);
 
 }

@@ -38,6 +38,12 @@ public class EmployeeService {
 		System.out.println("SAVED!!!");
 	}
 	
+	public void deleteEmployee(int empId) {
+		System.out.println("Inside deleteEmployee");
+		employeeRepository.deleteByempId(empId);
+		System.out.println("deleted employee!!!");
+	}
+	
 	
 	public Employee getEmployee(int empId){
 		System.out.println("Inside getEmployee");
@@ -46,6 +52,22 @@ public class EmployeeService {
 		
 		System.out.println("Employee is: "+emp.toString());
 					
+		return emp;
+	}
+	
+	public Employee updateEmployee(Employee newEmployee, int empId) {
+		employeeRepository.save(newEmployee);
+		Employee emp = employeeRepository.findByempId(empId);
+		/*return employeeRepository.findById(empId)
+			      .map(employee -> {
+			        employee.setName(newEmployee.getName());
+			        employee.setRole(newEmployee.getRole());
+			        return repository.save(employee);
+			      })
+			      .orElseGet(() -> {
+			        newEmployee.setId(id);
+			        return employeeRepository.save(newEmployee);
+			      });*/
 		return emp;
 	}
 	
