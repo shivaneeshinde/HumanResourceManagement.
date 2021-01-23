@@ -63,7 +63,7 @@ public class RestController {
 		return "Leaves are added to the table!!";
 	}
 	
-	@GetMapping("/login")
+	@PostMapping("/login")
 	public Employee login(@RequestBody Login login) throws ResourceNotFoundException {
 	    System.out.println("Inside login method");
 	    String originalInput = login.getPassword();
