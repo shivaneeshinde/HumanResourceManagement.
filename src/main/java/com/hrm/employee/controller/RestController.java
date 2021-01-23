@@ -25,20 +25,20 @@ import org.springframework.web.bind.annotation.RequestMapping;*/
 
 //@Controller
 //@RequestMapping("/emp")
+@CrossOrigin(origins = "http://hrms-hackathon.herokuapp.com")
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
 	
 	@Autowired
 	private EmployeeService employeeService;
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	//@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/healthCheck")
 	public String check()
 	{
 		return "checked";
 	}
 
-	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/addEmployee")
 	public Employee registration(@RequestBody Employee employee) {
 	    System.out.println("Inside Registration method");
@@ -53,7 +53,6 @@ public class RestController {
 		return result;
 	}
 	
-	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/addLeaves")
 	public String addLeaves(@RequestBody Leaves leaves) {
 	    System.out.println("Inside addLeaves method");
@@ -63,7 +62,6 @@ public class RestController {
 		return "Leaves are added to the table!!";
 	}
 	
-	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/login")
 	public Employee login(@RequestBody Login login) throws ResourceNotFoundException {
 	    System.out.println("Inside login method");
@@ -75,7 +73,6 @@ public class RestController {
 		return emp;
 	}
 
-	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/empList")
 	public List<Employee> empList() {
 	    System.out.println("Inside empList method");
