@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -70,6 +71,13 @@ public class RestController {
 	    System.out.println("Encoded password is: "+encodedString);
 	    login.setPassword(encodedString);
 		Employee emp = employeeService.login(login);
+		return emp;
+	}
+	
+	@GetMapping("/showEmployee/{empId}")
+	public Employee showEmployee(@PathVariable("empId") int empId){
+	    System.out.println("Inside login method");
+		Employee emp = employeeService.getEmployee(empId);
 		return emp;
 	}
 

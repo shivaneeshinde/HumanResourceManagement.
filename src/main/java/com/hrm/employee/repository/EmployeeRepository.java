@@ -16,5 +16,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	List<Employee> findByEmailIdAndEmPaasword(String EmailId, String EmPaasword);
 
 	Employee findTopByOrderByEmpIdDesc();
+	
+	Employee findByempId(int empId);
 
 }

@@ -39,6 +39,17 @@ public class EmployeeService {
 	}
 	
 	
+	public Employee getEmployee(int empId){
+		System.out.println("Inside getEmployee");
+		Employee emp = employeeRepository.findByempId(empId);
+				//.orElseThrow( () -> new ResourceNotFoundException("Employee not found for this id: " + email) );
+		
+		System.out.println("Employee is: "+emp.toString());
+					
+		return emp;
+	}
+	
+	
 	public Employee login(Login login) throws ResourceNotFoundException {
 		String email = login.getEmailId();
 		System.out.println("Inside login");
